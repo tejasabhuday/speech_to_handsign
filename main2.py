@@ -1,9 +1,7 @@
 import speech_recognition as sr
 import numpy as np
 import matplotlib.pyplot as plt
-import cv2
 from easygui import *
-import os
 from PIL import Image, ImageTk
 from itertools import count
 import tkinter as tk
@@ -35,16 +33,13 @@ def func():
         
         arr=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r', 's','t','u','v','w','x','y','z']
         with sr.Microphone() as source:
-                # image   = "signlang.png"
-                # msg="HEARING IMPAIRMENT ASSISTANT"
-                # choices = ["Live Voice","All Done!"] 
-                # reply   = buttonbox(msg,image=image,choices=choices)
+
                 r.adjust_for_ambient_noise(source) 
                 i=0
                 while True:
                         print("I am Listening")
                         audio = r.listen(source)
-                        # recognize speech using Sphinx
+                        
                         try:
                                 a=r.recognize_google(audio)
                                 a = a.lower()
@@ -60,7 +55,7 @@ def func():
                                 elif(a.lower() in isl_gif):
                                     
                                     class ImageLabel(tk.Label):
-                                            """a label that displays images, and plays them if they are gifs"""
+
                                             def load(self, im):
                                                 if isinstance(im, str):
                                                     im = Image.open(im)
@@ -117,7 +112,7 @@ def func():
                         plt.close()
 while 1:
   image   = "signlang.png"
-  msg="HEARING IMPAIRMENT ASSISTANT"
+  msg="The HearAid"
   choices = ["Live Voice","All Done!"] 
   reply   = buttonbox(msg,image=image,choices=choices)
   if reply ==choices[0]:
